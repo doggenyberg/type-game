@@ -7,50 +7,64 @@
         <link rel="stylesheet" href="./styles.css" type="text/css">
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
-    <body>
+    <body class="flex-c">
+        <h1>typing game</h1>
+
         <div class="wrapper flex-c">
-            <h1>typing game</h1>
             <div class="info flex-r">
-                <div class="time flex-r">
+                <div onclick="changeTimer()" class="time flex-r">
                     <span class="material-symbols-outlined">
                         timer
                     </span>
-                    <label id="timer">30</label>s
+                    <p id="timer">30</p>s
                 </div>
                 <div class="record flex-r">
                     <span class="material-symbols-outlined">
                         trophy
                     </span>
-                    <label id="record""></label>wpm
+                    <p id="record"">0</p>wpm
                 </div>
             </div>
             <div class="game-container flex-c form__group field">
-                <label for="inputField" class="word">test</label>
+                <label for="inputField" id="word">test</label>
                 <div class="form__group field">
-                    <input type="input" class="form__field" placeholder="type here"
-                        name="name" id='name' required />
-                    <label for="name" class="form__label">type here</label>
-                </div>
-                <button>play</button>
-            </div>
-            <div class="settings flex-r">
-                <div class="language-container flex-c">
-                    <label for="language">language</label>
-                    <select id="language">
-                        <option value="English">English</option>
-                        <option value="Swedish">Swedish</option>
-                    </select>
-                </div>
-                <div class="difficult-container flex-c">
-                    <label for="difficulty">difficulty</label>
-                    <select id="difficulty">
-                        <option value="easy">Easy</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Hard">Hard</option>
-                    </select>
+                    <input type="input" class="form__field"
+                        placeholder="type here"
+                        id="input" />
+                    <label for="input" class="form__label">type here</label>
                 </div>
             </div>
+            <footer class="flex-r">
+                <div class="settings flex-r">
+                    <div class="language-container flex-c">
+                        <label for="language">language</label>
+                        <select id="language">
+                            <option value="English">English</option>
+                            <option value="Swedish">Swedish</option>
+                        </select>
+                    </div>
+                    <div class="difficult-container flex-c">
+                        <label for="difficulty">difficulty</label>
+                        <select onchange="updateDifficulty()" id="difficulty">
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="credit flex-c">
+                    <div class="github">
+                        <span>GitHub</span><i class="fa fa-github"
+                            style="font-size:24px" id="github"></i>
+                    </div>
+                    <a href="https://github.com/doggenyberg" target="_blank">douglas nyberg</a>
+                </div>
+            </footer>
+            <dialog></dialog>
         </div>
     </body>
+    <script defer src="./script.js"></script>
 </html>

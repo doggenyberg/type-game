@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
 * {
   padding: 0;
@@ -11,22 +12,17 @@
   --color-bg2: #5d0e41b0;
   --color-accent: #a0153e;
   --color-text: #ff204e;
-
-  --primary: #11998e;
-  --secondary: #38ef7d;
-  --white: #fff;
   --gray: #9b9b9b;
 }
 
 .form__group {
   position: relative;
   padding: 15px 0 0;
-  margin-top: 10px;
   width: 100%;
 }
 
 .form__field {
-  font-family: inherit;
+  font-family: "Source Code Pro", monospace;
   width: 100%;
   border: 0;
   border-bottom: 2px solid var(--gray);
@@ -35,7 +31,6 @@
   color: var(--white);
   padding: 7px 0;
   background: transparent;
-
 }
 
 .form__field::placeholder {
@@ -60,7 +55,11 @@
 .form__field:focus {
   padding-bottom: 6px;
   border-width: 3px;
-  border-image: linear-gradient(to right, var(--color-accent), var(--color-text));
+  border-image: linear-gradient(
+    to right,
+    var(--color-accent),
+    var(--color-text)
+  );
   border-image-slice: 1;
 }
 
@@ -84,7 +83,7 @@
 }
 
 body {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,10 +104,15 @@ body {
 }
 
 .wrapper {
-  min-width: 400px;
+  margin: 1rem;
+  width: 100%;
+  min-width: 320px;
+  max-width: 500px;
+  max-height: 600px;
+  flex-grow: 1;
+  flex-grow: 1;
   align-items: center;
-  justify-content: center;
-  padding: 2rem 3rem;
+  justify-content: space-between;
   border-radius: 10px;
   gap: 1rem;
   background: rgb(0, 31, 71);
@@ -131,24 +135,25 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#001f47",endColorstr="#002a60",GradientType=1);
 }
 
-.wrapper h1 {
+h1 {
   padding: 0.8rem;
-  width: 100%;
-  text-align: center;
-  background-color: #001b3d;
+  text-align: left;
   border-radius: 5px;
   color: #cacaca;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: 800;
 }
 
 .info {
+  padding: 2rem;
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 1rem;
   font-size: 0.9rem;
 }
 
 .info span {
-  margin-right: 0.5rem;
+  margin-right: 5px;
 }
 
 .info .time,
@@ -157,36 +162,79 @@ body {
   background-color: var(--color-bg2);
   border-radius: 5px;
   align-items: center;
+  justify-content: flex-start;
+  user-select: none;
+}
+
+.info .time {
+  cursor: pointer;
+  background-color: var(--color-accent);
+  color: #fff;
+  min-width: 70px;
+}
+
+.info #record {
+  margin-right: 5px;
 }
 
 .game-container {
   width: 100%;
-  padding: 3rem 0;
+  padding: 4rem 2rem;
   align-items: center;
   gap: 1rem;
 }
 
-/* .game-container input {
-  width: 100%;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: rgba(29, 29, 29, 0.415);
-  border: none;
-  border-radius: 20px;
-  font-family: "Poppins", sans-serif;
-  color: rgb(205, 205, 205);
+.game-container #word {
+  font-size: 2rem;
+  font-weight: 500;
+  color: white;
 }
 
-.game-container input:focus {
-  outline: none;
-} */
+footer {
+    width: 100%;   
+    padding: 2rem;
+    background-color: #00000047;
+    color: #cacaca;
+    justify-content: space-between;
+}
 
 .settings {
-  width: 100%;
-  justify-content: space-evenly;
-  padding: 1rem 2rem;
-  gap: 2rem;
-  color: #cacaca;
-  background-color: var(--color-bg2);
-  border-radius: 5px;
+    gap: 1rem;
+}
+
+.settings select {
+    border: none;
+    color: var(--color-text);
+    font-family: "Source Code Pro", monospace;
+    background-color: #ffffff00;
+}
+
+.settings select:focus {
+    border: none;
+
+}
+
+.settings select > option {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 0.75rem;
+    color: rgb(0, 0, 0);
+}
+
+.credit {
+    cursor: pointer;
+}
+
+.credit .github {
+    display: flex;
+    align-items: end;
+    gap: 5px;
+    justify-content: flex-end;
+}
+
+.credit a {
+    font-size: 0.75rem;
+    color: var(--color-text);
+    text-decoration: none;
 }
