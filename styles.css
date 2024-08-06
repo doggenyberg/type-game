@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-bg: #00224d;
+  --color-bg2: #5d0e41b0;
+  --color-accent: #a0153e;
+  --color-text: #ff204e;
+
+  --primary: #11998e;
+  --secondary: #38ef7d;
+  --white: #fff;
+  --gray: #9b9b9b;
+}
+
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid var(--gray);
+  outline: 0;
+  font-size: 1.3rem;
+  color: var(--white);
+  padding: 7px 0;
+  background: transparent;
+
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 1rem;
+  cursor: text;
+  top: 30px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: all 0.2s ease-in-out;
+  font-size: 1rem;
+  color: var(--gray);
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  border-width: 3px;
+  border-image: linear-gradient(to right, var(--color-accent), var(--color-text));
+  border-image-slice: 1;
+}
+
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #00000000;
+  font-weight: 700;
+}
+
+.form__field:required,
+.form__field:invalid {
+  box-shadow: none;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  background-color: #000e21;
+  color: var(--color-text);
+}
+
+.flex-c {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-r {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper {
+  min-width: 400px;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  gap: 1rem;
+  background: rgb(0, 31, 71);
+  background: rgb(0, 31, 71);
+  background: -moz-linear-gradient(
+    326deg,
+    rgba(0, 31, 71, 1) 0%,
+    rgba(0, 42, 96, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    326deg,
+    rgba(0, 31, 71, 1) 0%,
+    rgba(0, 42, 96, 1) 100%
+  );
+  background: linear-gradient(
+    326deg,
+    rgba(0, 31, 71, 1) 0%,
+    rgba(0, 42, 96, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#001f47",endColorstr="#002a60",GradientType=1);
+}
+
+.wrapper h1 {
+  padding: 0.8rem;
+  width: 100%;
+  text-align: center;
+  background-color: #001b3d;
+  border-radius: 5px;
+  color: #cacaca;
+  font-size: 1.5rem;
+}
+
+.info {
+  width: 100%;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.info span {
+  margin-right: 0.5rem;
+}
+
+.info .time,
+.info .record {
+  padding: 0.4rem;
+  background-color: var(--color-bg2);
+  border-radius: 5px;
+  align-items: center;
+}
+
+.game-container {
+  width: 100%;
+  padding: 3rem 0;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* .game-container input {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(29, 29, 29, 0.415);
+  border: none;
+  border-radius: 20px;
+  font-family: "Poppins", sans-serif;
+  color: rgb(205, 205, 205);
+}
+
+.game-container input:focus {
+  outline: none;
+} */
+
+.settings {
+  width: 100%;
+  justify-content: space-evenly;
+  padding: 1rem 2rem;
+  gap: 2rem;
+  color: #cacaca;
+  background-color: var(--color-bg2);
+  border-radius: 5px;
+}
