@@ -33,7 +33,8 @@
                 <div class="form__group field">
                     <input type="input" class="form__field"
                         placeholder="type here"
-                        id="input" />
+                        id="input"
+                        onchange="checkInput()" />
                     <label for="input" class="form__label">type here</label>
                 </div>
             </div>
@@ -41,7 +42,7 @@
                 <div class="settings flex-r">
                     <div class="language-container flex-c">
                         <label for="language">language</label>
-                        <select id="language">
+                        <select onchange="updateLanguage()" id="language">
                             <option value="English">English</option>
                             <option value="Swedish">Swedish</option>
                         </select>
