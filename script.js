@@ -17,12 +17,20 @@ let allEnglishWords = [];
 let allSwedishWords = [];
 let playing = false;
 
+const loadDefaultValues = async () => {
+  await getEnglishWords();
+  await getSwedishWords();
+  updateLanguage();
+  updateDifficulty();
+  getRandomWord();
+};
+
 const getEnglishWords = async () => {
   try {
     const res = await fetch("./src/englishWords.json");
     const data = await res.json();
     allEnglishWords = data.englishWords;
-    filterArrDifficulty()
+    filterArrDifficulty();
   } catch (e) {
     console.error("Could not retrieve English words: " + e);
   }
@@ -45,8 +53,12 @@ const filterArrDifficulty = () => {
   mediumSwedishWords = allSwedishWords.filter((word) => word.length < 9);
 };
 
-const getRandomWord = (language) => {
-  return language[Math.floor(Math.random() * language.length)];
+const getRandomWord = (arr) => {
+  try {
+    return arr[Math.floor(Math.random() * language.length)];
+  } catch {
+    return "Type to start";
+  }
 };
 
 const changeTimer = () => {
@@ -67,7 +79,31 @@ const changeTimer = () => {
 
 const updateDifficulty = () => {
   difficulty = difficultyElement.value;
-  updateWord();
+  const words = getDifficulty(difficulty);
+  updateWord(words);
+};
+
+const getDifficulty = (difficulty) => {
+  if (language == "English") {
+    switch (difficulty) {
+      case "Easy":
+        return easyEnglishWords;
+      case "Medium":
+        return mediumEnglishWords;
+      case "Hard":
+        return allEnglishWords;
+    }
+  }
+  if (language == "Swedish") {
+    switch (difficulty) {
+      case "Easy":
+        return easySwedishWords;
+      case "Medium":
+        return mediumSwedishWords;
+      case "Hard":
+        return allSwedishWords;
+    }
+  }
 };
 
 const updateLanguage = () => {
@@ -75,12 +111,12 @@ const updateLanguage = () => {
   updateWord();
 };
 
-const updateWord = (difficulty) => {
+const updateWord = (arr) => {
   if (language == "English") {
-    word.innerHTML = getRandomWord(allEnglishWords);
+    word.innerHTML = getRandomWord(arr);
   }
   if (language == "Swedish") {
-    word.innerHTML = getRandomWord(allSwedishWords);
+    word.innerHTML = getRandomWord(arr);
   }
 };
 
@@ -90,6 +126,4 @@ inputField.addEventListener("input", function (e) {
   console.log(e.target.value);
 });
 
-getEnglishWords();
-getSwedishWords();
-setTimeout(updateWord, 500);
+loadDefaultValues()
