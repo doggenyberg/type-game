@@ -9,32 +9,44 @@ let record = 0;
 let language = languageElement.value;
 let difficulty = difficultyElement.value;
 
-let englishWords = [];
-let swedishWords = [];
+let easyEnglishWords = [];
+let easySwedishWords = [];
+let mediumEnglishWords = [];
+let mediumSwedishWords = [];
+let allEnglishWords = [];
+let allSwedishWords = [];
+let playing = false;
 
-const getEnglishWords = () => {
-  fetch("./src/englishWords.json")
-    .then((res) => res.json())
-    .then((data) => {
-      englishWords = data;
-    })
-    .catch((error) => console.error("Error loading English words: ", error));
+const getEnglishWords = async () => {
+  try {
+    const res = await fetch("./src/englishWords.json");
+    const data = await res.json();
+    allEnglishWords = data.englishWords;
+    filterArrDifficulty()
+  } catch (e) {
+    console.error("Could not retrieve English words: " + e);
+  }
 };
 
-const getSwedishWords = () => {
-  fetch("./src/swedishWords.json")
-    .then((res) => res.json())
-    .then((data) => {
-      swedishWords = data;
-      
-    })
-    .catch((error) => console.error("Error loading Swedish words: ", error));
+const getSwedishWords = async () => {
+  try {
+    const res = await fetch("./src/swedishWords.json");
+    const data = await res.json();
+    allSwedishWords = data.allSwedishWords;
+  } catch (e) {
+    console.error("Error loading Swedish words: ", error);
+  }
 };
 
-const getRandomWord = async (language) => {
-  // HÄR FELAR DET!!!!
-  // Den returnerar undefined
-  return language[Math.floor(Math.random() * language.length)]; 
+const filterArrDifficulty = () => {
+  easyEnglishWords = allEnglishWords.filter((word) => word.length < 6);
+  easySwedishWords = allSwedishWords.filter((word) => word.length < 6);
+  mediumEnglishWords = allEnglishWords.filter((word) => word.length < 9);
+  mediumSwedishWords = allSwedishWords.filter((word) => word.length < 9);
+};
+
+const getRandomWord = (language) => {
+  return language[Math.floor(Math.random() * language.length)];
 };
 
 const changeTimer = () => {
@@ -63,18 +75,21 @@ const updateLanguage = () => {
   updateWord();
 };
 
-const updateWord = () => {
+const updateWord = (difficulty) => {
   if (language == "English") {
-    console.log(englishWords)
-    word.innerHTML = getRandomWord(englishWords);
+    word.innerHTML = getRandomWord(allEnglishWords);
   }
   if (language == "Swedish") {
-    word.innerHTML = getRandomWord(swedishWords);
+    word.innerHTML = getRandomWord(allSwedishWords);
   }
 };
 
-inputField.addEventListener("input", function () {});
+const playGame = (timer, difficulty) => {};
+
+inputField.addEventListener("input", function (e) {
+  console.log(e.target.value);
+});
 
 getEnglishWords();
 getSwedishWords();
-updateWord();
+setTimeout(updateWord, 500);

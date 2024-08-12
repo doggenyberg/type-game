@@ -29,11 +29,12 @@
                 </div>
             </div>
             <div class="game-container flex-c form__group field">
-                <label for="inputField" id="word">test</label>
+                <label for="inputField" id="word">#</label>
                 <div class="form__group field">
                     <input type="input" class="form__field"
                         placeholder="type here"
                         id="input"
+                        autocomplete="off"
                         onchange="checkInput()" />
                     <label for="input" class="form__label">type here</label>
                 </div>
@@ -61,11 +62,12 @@
                         <span>GitHub</span><i class="fa fa-github"
                             style="font-size:24px" id="github"></i>
                     </div>
-                    <a href="https://github.com/doggenyberg" target="_blank">douglas nyberg</a>
+                    <a href="https://github.com/doggenyberg"
+                        target="_blank">douglas nyberg</a>
                 </div>
             </footer>
             <dialog></dialog>
         </div>
     </body>
-    <script defer src="./script.js"></script>
+    <script async src="./script.js"></script>
 </html>
